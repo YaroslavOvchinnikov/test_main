@@ -33,7 +33,7 @@ steps:
   - --region=northamerica-northeast1
   - --source=./qwerty
   - --trigger-http
-  - --runtime=pyhon39
+  - --runtime=python39
   - --project=solid-muse-376109
   - --entry-point=main
   id: DEPLOY1
