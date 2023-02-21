@@ -1,0 +1,39 @@
+# This CloudBuild will be triggered by push to staging branch
+#
+
+steps:
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  args: ['echo', 'Building...']
+  id: BUILD
+
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  args: ['echo', 'Testing...']
+  id: TEST
+
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  args:
+  - gcloud
+  - functions
+  - deploy
+  - blabla-func
+  - --region=northamerica-northeast1
+  - --source=./blabla
+  - --trigger-http
+  - --runtime=python39
+  - --project=solid-muse-376109
+  - --entry-point=main
+  id: DEPLOY
+
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  args:
+  - gcloud
+  - functions
+  - deploy
+  - qwerty-func
+  - --region=northamerica-northeast1
+  - --source=./qwerty
+  - --trigger-http
+  - --runtime=pyhon39
+  - --project=solid-muse-376109
+  - --entry-point=main
+  id: DEPLOY
